@@ -19,18 +19,10 @@ jobs:
       - run:
           command: yarn run test
           name: Run tests
-  build:
-    executor: aws-ecr/default
-    steps:
-      - aws-ecr/build-image:
-          repo: lab1test
-          setup-remote-docker: true
-
 workflows:
   say-hello-workflow:
     jobs:
-      - build
-      # - aws-ecr/build-and-push-image: # Use the pre-defined `build-and-push-image` job
-      #     create-repo: true
-      #     repo: lab1test
-      #     docker-login: true
+      - aws-ecr/build-and-push-image: # Use the pre-defined `build-and-push-image` job
+          create-repo: true
+          repo: lab1test
+          setup-remote-docker: true
