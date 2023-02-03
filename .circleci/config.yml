@@ -20,23 +20,8 @@ jobs:
           command: yarn run test
           name: Run tests
   build-and-push:
-    executor: docker/docker
-    steps:
-      - setup_remote_docker
-      - checkout
-      - docker/check
-      - docker/build:
-          image: ${DOCKER_LOGIN}/lab1
-          tag: latest
-      - deploy:
-          name: Push application Docker image
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "orbBasedImage" ]; then
-              login="$(aws ecr get-login)"
-              ${login}
-              docker tag app "${DOCKER_LOGIN}/lab1:latest"
-              docker push "${DOCKER_LOGIN}/lab1:latest"
-            fi
+    - aws-ecr/build-and-push-image:
+        create-repo: true
 
 
 
