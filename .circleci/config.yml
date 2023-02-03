@@ -19,10 +19,6 @@ jobs:
       - run:
           command: yarn run test
           name: Run tests
-  build-and-push:
-    steps:
-      - aws-ecr/build-and-push-image:
-          create-repo: true
 
 
 
@@ -32,4 +28,5 @@ workflows:
   say-hello-workflow:
     jobs:
       # - test
-      - build-and-push
+      - aws-ecr/build-and-push-image:
+          create-repo: true
