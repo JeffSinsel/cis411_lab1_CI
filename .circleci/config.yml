@@ -21,8 +21,6 @@ jobs:
           name: Run tests
   deploy:
     executor: docker/docker
-    requires:
-      - aws-ecr/build-and-push-image
     steps:
       - aws-ecs/run-task:
           awsvpc: false
@@ -38,4 +36,6 @@ workflows:
           executor: docker/docker
           repo: lab1test
           setup-remote-docker: true
-      - deploy
+      - deploy:
+          requires:
+            - aws-ecr/build-and-push-image
