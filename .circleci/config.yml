@@ -19,11 +19,23 @@ jobs:
       - run:
           command: yarn run test
           name: Run tests
+  deploy:
+    executor: docker/docker
+    requires:
+      - aws-ecr/build-and-push-image
+    steps:
+      - aws-ecs/run-task:
+          awsvpc: false
+          cluster: ClusterTest
+          launch-type: EC2
+          task-definition: myapp
+
 workflows:
   say-hello-workflow:
     jobs:
-      - aws-ecr/build-and-push-image: # Use the pre-defined `build-and-push-image` job
+      # - test
+      - aws-ecr/build-and-push-image:
           executor: docker/docker
-          create-repo: true
           repo: lab1test
           setup-remote-docker: true
+      - deploy
