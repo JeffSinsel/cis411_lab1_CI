@@ -27,7 +27,6 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
-      # - test
       - build
       # - aws-ecr/build-and-push-image: # Use the pre-defined `build-and-push-image` job
       #     create-repo: true
