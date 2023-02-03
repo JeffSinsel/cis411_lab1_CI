@@ -24,6 +24,7 @@ jobs:
     steps:
       - aws-ecr/build-image:
           repo: lab1test
+          setup-remote-docker: true
 
 workflows:
   say-hello-workflow:
