@@ -23,6 +23,7 @@ workflows:
   say-hello-workflow:
     jobs:
       - aws-ecr/build-and-push-image: # Use the pre-defined `build-and-push-image` job
+          executor: docker/docker
           create-repo: true
           repo: lab1test
           setup-remote-docker: true
