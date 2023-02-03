@@ -26,6 +26,7 @@ jobs:
           cluster: ClusterTest
           launch-type: EC2
           task-definition: myapp
+          awsvpc: false
 
 workflows:
   say-hello-workflow:
