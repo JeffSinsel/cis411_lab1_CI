@@ -20,6 +20,7 @@ jobs:
           command: yarn run test
           name: Run tests
   build:
+    executor: aws-ecr/default
     steps:
       - aws-ecr/build-image:
           repo: lab1test
