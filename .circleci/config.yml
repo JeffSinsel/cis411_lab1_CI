@@ -22,6 +22,7 @@ jobs:
   deploy:
     executor: docker/docker
     steps:
+      - aws-cli/install
       - aws-ecs/run-task:
           cluster: ClusterTest
           launch-type: EC2
