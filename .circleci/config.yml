@@ -4,7 +4,9 @@ version: 2.1
 orbs:
   node: circleci/node@5.1.0
   docker: circleci/docker@2.2.0
-  aws-ecr: circleci/aws-ecr@8.2.1
+  aws-ecr: circleci/aws-ecr@8.1.2 
+  aws-ecs: circleci/aws-ecs@3.2.0 
+  aws-cli: circleci/aws-cli@3.1.1 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -17,21 +19,17 @@ jobs:
       - run:
           command: yarn run test
           name: Run tests
-  build-and-push:
-    executor: docker/docker
+  build:
+    executor: aws-ecr/default
     steps:
-      - setup_remote_docker
-      - checkout
-      - docker/check
-      - docker/build:
-          image: ${DOCKER_LOGIN}/lab1
-          tag: latest
-      - aws-ecr/ecr-login
+      - aws-ecr/build-image:
+          repo: lab1test
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
-      - test
-      - build-and-push
+      - build
+      # - aws-ecr/build-and-push-image: # Use the pre-defined `build-and-push-image` job
+      #     create-repo: true
+      #     repo: lab1test
+      #     docker-login: true
