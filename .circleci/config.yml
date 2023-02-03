@@ -24,6 +24,7 @@ jobs:
       - aws-ecr/build-image:
           repo: test
           
+          
 
 
 # Invoke jobs via workflows
