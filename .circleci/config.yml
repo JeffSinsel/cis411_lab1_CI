@@ -23,7 +23,6 @@ jobs:
     executor: docker/docker
     steps:
       - aws-ecs/run-task:
-          awsvpc: false
           cluster: ClusterTest
           launch-type: EC2
           task-definition: myapp
@@ -32,10 +31,8 @@ workflows:
   say-hello-workflow:
     jobs:
       # - test
-      - aws-ecr/build-and-push-image:
-          executor: docker/docker
-          repo: lab1test
-          setup-remote-docker: true
-      - deploy:
-          requires:
-            - aws-ecr/build-and-push-image
+      # - aws-ecr/build-and-push-image:
+      #     executor: docker/docker
+      #     repo: lab1test
+      #     setup-remote-docker: true
+      - deploy
