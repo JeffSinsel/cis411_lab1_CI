@@ -34,7 +34,7 @@ jobs:
       - run: 
           name: Connect to SSH server
           command: |
-              ssh -f fc:55:da:7f:75:22:30:ef:bd:10:37:75:c9:8a:8c:54 ec2_user@ec2-18-234-169-0.compute-1.amazonaws.com "echo Hello"
+              ssh ec2_user@ec2-18-234-169-0.compute-1.amazonaws.com "echo Hello"
             # "sudo service docker start
             # docker pull 302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest
             # docker run -p 4000:4000  --rm 302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest"
