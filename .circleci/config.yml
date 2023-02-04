@@ -25,7 +25,7 @@ jobs:
       - aws-cli/install
       - run: 
           name: Connect to SSH server
-          command: ssh -o ec2_user@ec2-18-234-169-0.compute-1.amazonaws.com
+          command: ssh ec2_user@ec2-18-234-169-0.compute-1.amazonaws.com
       - run:
           name: Deploy
           command: |
