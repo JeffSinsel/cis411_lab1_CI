@@ -34,7 +34,7 @@ jobs:
       - run: 
           name: Connect to SSH server
           command: |
-              cd home/circleci/project
+              cd ~/project
               ls
               ssh -i ~/project/lab1_keys.pem ec2_user@ec2-18-234-169-0.compute-1.amazonaws.com "echo Hello"
             # "sudo service docker start
