@@ -23,6 +23,7 @@ jobs:
     executor: docker/docker
     steps:
       - aws-cli/install
+      - aws-cli/setup
       - run:
           name: Open port
           command: |
