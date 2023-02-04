@@ -23,24 +23,11 @@ jobs:
     executor: docker/docker
     steps:
       - aws-cli/install
-      - aws-ecs/run-task:
-          cluster: ClusterTest
-          launch-type: EC2
-          task-definition: 
-            {
-              "family": "task-definition-name",
-              ...
-              "containerDefinitions": [
-                  {
-                      "name": "container-name",
-                      "image": "302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest",
-                      ...
-                  }
-              ],
-              ...
-            }
-          awsvpc: false
-
+      - run: |
+      ssh -o StrictHostKeyChecking=no ec2_user@ec2-18-234-169-0.compute-1.amazonaws.com \
+      sudo service docker start \
+      docker pull 302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest \
+      docker run -p 4000:4000  --rm 302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest
 workflows:
   say-hello-workflow:
     jobs:
