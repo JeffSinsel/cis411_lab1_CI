@@ -26,7 +26,7 @@ jobs:
       - run:
           name: Open port
           command: |
-            PUBLIC_IP=$(curl ipinfo.io/ip)
+            PUBLIC_IP=$(curl ipinfo.io/ip) \
             ~/bin/aws ec2 authorize-security-group-ingress --region $AWS_REGION --group-id $SG_ID \
               --protocol tcp --port 22 --cidr $PUBLIC_IP/24
             sleep 5
