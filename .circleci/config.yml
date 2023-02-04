@@ -20,7 +20,6 @@ jobs:
           command: yarn run test
           name: Run tests
   deploy:
-    executor: docker/docker
     machine:
       enabled: true
     steps:
