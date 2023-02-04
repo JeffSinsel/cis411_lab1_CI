@@ -23,6 +23,13 @@ jobs:
     executor: docker/docker
     steps:
       - aws-cli/install
+      - run:
+          name: Open port
+          command: |
+            PUBLIC_IP=$(curl ipinfo.io.ip)
+            ~/bin/aws ec2 authorize-security-group-ingress --region $AWS_REGION --group-id $SG_ID \
+              --protocol tcp --port 22 --cidr $PUBLIC_IP/24
+            sleep 5
       - run: 
           name: Connect to SSH server
           command: ssh ec2_user@ec2-18-234-169-0.compute-1.amazonaws.com "sudo service docker start \
