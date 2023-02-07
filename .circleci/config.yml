@@ -4,8 +4,6 @@ version: 2.1
 orbs:
   node: circleci/node@5.1.0
   docker: circleci/docker@2.2.0
-  aws-ecr: circleci/aws-ecr@8.1.2 
-  aws-ecs: circleci/aws-ecs@3.2.0 
   aws-cli: circleci/aws-cli@3.1.1 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -54,15 +52,15 @@ jobs:
       - run: 
           name: Connect through SSH
           command: |
-              ssh -i "cis411_lab1.pem" ec2-user@ec2-100-25-33-244.compute-1.amazonaws.com "bash script.sh"
+              ssh -i "cis411_lab1.pem" ec2-54-209-115-31.compute-1.amazonaws.com "bash script.sh"
 
 workflows:
   say-hello-workflow:
     jobs:
       # - test
-      - build-and-push
+      # - build-and-push:
           # requires:
           #   - test
-      # - deploy:
+      - deploy
       #     requires:
       #       - build-and-push
