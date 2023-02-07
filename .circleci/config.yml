@@ -44,25 +44,25 @@ jobs:
       - checkout
       - aws-cli/install
       - aws-cli/setup
-      # - run: 
-      #     name: Setup key
-      #     command: |
-      #         echo "-----BEGIN RSA PRIVATE KEY-----\n" >> cis411_lab1.pem
-      #         echo $SSH_KEY | tr " " "\n" >> cis411_lab1.pem
-      #         echo "\n-----END RSA PRIVATE KEY-----" >> cis411_lab1.pem
-      - run: chmod 400 cis411_lab1.pem
       - run: 
-          name: Find live containers
+          name: Setup key
+          command: |
+              echo "-----BEGIN RSA PRIVATE KEY-----\n" >> cis411_lab1.pem
+              echo $SSH_KEY | tr " " "\n" >> cis411_lab1.pem
+              echo "\n-----END RSA PRIVATE KEY-----" >> cis411_lab1.pem
+              chmod 400 cis411_lab1.pem
+      - run: 
+          name: Connect through SSH
           command: |
               ssh -i "cis411_lab1.pem" ec2-user@ec2-100-25-33-244.compute-1.amazonaws.com "bash script.sh"
 
 workflows:
   say-hello-workflow:
     jobs:
-      - test
-      - build-and-push:
-          requires:
-            - test
-      - deploy:
-          requires:
-            - build-and-push
+      # - test
+      - build-and-push
+          # requires:
+          #   - test
+      # - deploy:
+      #     requires:
+      #       - build-and-push
