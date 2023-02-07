@@ -36,7 +36,7 @@ jobs:
       - run: 
           name: Connect to SSH server
           command: |
-              ssh -i "cis411_lab1.pem" ec2-user@ec2-100-25-33-244.compute-1.amazonaws.com" 
+              ssh -i "cis411_lab1.pem" ec2-user@ec2-100-25-33-244.compute-1.amazonaws.com " 
               sudo service docker start
               docker pull jeffsinsel/lab1:latest
               if [ docker ps -aq ]; then
