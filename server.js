@@ -130,6 +130,5 @@ app.use('/graphql', express_graphql({
     })
 }))
 app.listen(4000, () => {
-    process.exit();
     console.log('Express GraphQL Server Now Running On localhost:4000/graphql');
 })
