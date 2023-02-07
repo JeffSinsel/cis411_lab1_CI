@@ -30,7 +30,7 @@ jobs:
           name: Set up keys
           command: |
               touch lab1_keys.pem
-              echo $(SSH_KEY) >> lab1_keys.pem
+              echo ${SSH_KEY} >> lab1_keys.pem
               chmod 400 lab1_keys.pem
       - run: 
           name: Connect to SSH server
