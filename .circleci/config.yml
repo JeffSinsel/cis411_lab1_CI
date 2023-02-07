@@ -53,7 +53,7 @@ jobs:
       - run: 
           name: Connect through SSH
           command: |
-              ssh -i "cis411_lab1.pem" ec2-54-209-115-31.compute-1.amazonaws.com "bash script.sh"
+              ssh -i "cis411_lab1.pem" ec2-user@ec2-54-209-115-31.compute-1.amazonaws.com "bash script.sh"
 
 workflows:
   say-hello-workflow:
