@@ -35,8 +35,6 @@ jobs:
       - run: 
           name: Connect to SSH server
           command: |
-              chmod 700 /root/.ssh
-              chmod 600 /root/.ssh/authorized_keys
               chmod 400 cis411_lab1.pem
               ssh -i "cis411_lab1.pem" ec2_user@ec2-100-25-33-244.compute-1.amazonaws.com "sudo service docker start
               if [ docker ps -aq ]; then
