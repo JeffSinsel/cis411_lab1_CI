@@ -19,6 +19,24 @@ jobs:
       - run:
           command: yarn run test
           name: Run tests
+
+  build-and-push:
+    executor: docker/docker
+    steps:
+      - setup_remote_docker
+      - checkout
+      - docker/check
+      - docker/build:
+          image: ${DOCKER_LOGIN}/lab1
+          tag: latest
+      - docker/push:
+          digest-path: /tmp/digest.txt
+          image: ${DOCKER_LOGIN}/lab1
+          tag: latest
+      - run:
+          command: |
+            echo "Digest is: $(</tmp/digest.txt)"
+  
   deploy:
     machine:
       enabled: true
@@ -37,28 +55,14 @@ jobs:
           name: Find live containers
           command: |
               ssh -i "cis411_lab1.pem" ec2-user@ec2-100-25-33-244.compute-1.amazonaws.com "bash script.sh"
-      # - run: 
-      #     name: Connect to SSH server
-      #     command: |
-      #         ssh -i "cis411_lab1.pem" ec2-user@ec2-100-25-33-244.compute-1.amazonaws.com
-      #         sudo service docker start
-      #         docker pull jeffsinsel/lab1:latest
-      #         if docker ps -aq; then
 
-      #         docker stop
-      #         docker run -p 4000:4000 --rm jeffsinsel/lab1:latest
-      # - run:
-      #     name: Deploy
-      #     command: |
-      #         sudo service docker start \
-      #         docker pull 302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest \
-      #         docker run -p 4000:4000  --rm 302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest
 workflows:
   say-hello-workflow:
     jobs:
-      # - test
-      # - aws-ecr/build-and-push-image:
-      #     executor: docker/docker
-      #     repo: lab1test
-      #     setup-remote-docker: true
+      - test
+      - build-and-push
+          requires:
+            - test
       - deploy
+          requires:
+            - build-and-push
