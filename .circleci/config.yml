@@ -45,23 +45,22 @@ jobs:
       - run: 
           name: Setup key
           command: |
-              echo "-----BEGIN RSA PRIVATE KEY-----" >> cis411_lab1.pem
-              echo $SSH_KEY | tr " " "\n" >> cis411_lab1.pem
-              echo "-----END RSA PRIVATE KEY-----" >> cis411_lab1.pem
-              cat cis411_lab1.pem
-              chmod 400 cis411_lab1.pem
+              echo "-----BEGIN RSA PRIVATE KEY-----" >> key.pem
+              echo $SSH_KEY | tr " " "\n" >> key.pem
+              echo "-----END RSA PRIVATE KEY-----" >> key.pem
+              chmod 400 key.pem
       - run: 
           name: Connect through SSH
           command: |
-              ssh -i "cis411_lab1.pem" ec2-user@ec2-54-209-115-31.compute-1.amazonaws.com "bash script.sh"
+              ssh -i "key.pem" ec2-user@ec2-54-209-115-31.compute-1.amazonaws.com "bash script.sh"
 
 workflows:
   say-hello-workflow:
     jobs:
-      # - test
-      # - build-and-push:
-          # requires:
-          #   - test
-      - deploy
-      #     requires:
-      #       - build-and-push
+      - test
+      - build-and-push:
+          requires:
+            - test
+      - deploy:
+          requires:
+            - build-and-push

@@ -2,7 +2,7 @@ var express = require('express')
 var express_graphql = require('express-graphql')
 var { buildSchema } = require('graphql')
 var { loadOrder, queryOrders, upsertOrder, loadAccount, upsertAccount, deleteAccount, queryAccounts } = require('./dbutil');
-process.exit();
+
 // GraphQL schema
 var schema = buildSchema(`
     scalar Date
