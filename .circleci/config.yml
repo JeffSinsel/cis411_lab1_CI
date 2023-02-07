@@ -26,16 +26,10 @@ jobs:
       - checkout
       - aws-cli/install
       - aws-cli/setup
-      - run:
-          name: Open port
-          command: |
-            PUBLIC_IP=$(curl ipinfo.io/ip)
-            aws ec2 authorize-security-group-ingress --region $AWS_REGION --group-id $SG_ID --protocol tcp --port 22 --cidr $PUBLIC_IP/24
-            sleep 5
       - run: 
           name: Connect to SSH server
           command: |
-              ssh -o StrictHostKeyChecking=no ec2_user@ec2-18-234-169-0.compute-1.amazonaws.com "sudo service docker start
+              ssh ec2_user@ec2-18-234-169-0.compute-1.amazonaws.com "sudo service docker start
               docker pull 302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest
               docker run -p 4000:4000  --rm 302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest"
       # - run:
