@@ -44,8 +44,7 @@ jobs:
               else
                   docker stop $(docker ps -aq)
                   docker run -p 4000:4000 --rm jeffsinsel/lab1:latest
-              fi
-              logout"
+              fi"
       # - run:
       #     name: Deploy
       #     command: |
