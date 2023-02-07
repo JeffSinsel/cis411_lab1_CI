@@ -34,11 +34,11 @@ jobs:
       #         echo "\n-----END RSA PRIVATE KEY-----" >> cis411_lab1.pem
       - run: chmod 400 cis411_lab1.pem
       - run: 
-          name: Connect to SSH server
+          name: Find live containers
           command: |
               ssh -i "cis411_lab1.pem" ec2-user@ec2-100-25-33-244.compute-1.amazonaws.com "
               sudo service docker start
-              docker container kill $(docker ps -aq)"
+              docker ps -aq"
       # - run: 
       #     name: Connect to SSH server
       #     command: |
