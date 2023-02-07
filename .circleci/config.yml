@@ -26,9 +26,12 @@ jobs:
       - checkout
       - aws-cli/install
       - aws-cli/setup
-      - run: |
-            echo $SSH_KEY | tr " " "\n" >> cis411_lab1.pem
-            echo cis411_lab1.pem
+      - run: 
+          name: Setup key
+          command: |
+              echo "-----BEGIN RSA PRIVATE KEY-----\n" >> cis411_lab1.pem
+              echo $SSH_KEY | tr " " "\n" >> cis411_lab1.pem
+              echo "-----END RSA PRIVATE KEY-----\n" >> cis411_lab1.pem
       - run: 
           name: Connect to SSH server
           command: |
