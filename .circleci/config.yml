@@ -60,9 +60,9 @@ workflows:
   say-hello-workflow:
     jobs:
       - test
-      - build-and-push
+      - build-and-push:
           requires:
             - test
-      - deploy
+      - deploy:
           requires:
             - build-and-push
