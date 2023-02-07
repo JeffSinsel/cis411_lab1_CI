@@ -27,11 +27,14 @@ jobs:
       - aws-cli/install
       - aws-cli/setup
       - run: 
-          name: Connect to SSH server
+          name: Set up keys
           command: |
               touch lab1_keys.pem
               echo $(SSH_KEY) >> lab1_keys.pem
               chmod 400 lab1_keys.pem
+      - run: 
+          name: Connect to SSH server
+          command: |
               ssh -i "lab1_keys.pem" ec2_user@ec2-100-25-33-244.compute-1.amazonaws.com "sudo service docker start
               docker pull 302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest
               docker run -p 4000:4000  --rm 302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest"
