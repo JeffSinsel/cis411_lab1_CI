@@ -5,5 +5,4 @@ node_modules
 newrelic.js
 newrelic_agent.log
 test.json
-cis411_lab1.pem
 test.pem
