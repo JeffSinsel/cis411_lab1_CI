@@ -129,6 +129,10 @@ app.use('/graphql', express_graphql({
         path: error.path
     })
 }))
-app.listen(4000, () => {
-    console.log('Express GraphQL Server Now Running On yourawsdomain:4000/graphql');
+process.on('exit',() => {
+    app.listen(4000, () => {
+        console.log('Express GraphQL Server Now Running On yourawsdomain:4000/graphql');
+    })
 })
+
+process.exit()
