@@ -30,7 +30,7 @@ jobs:
           name: Connect to SSH server
           command: |
               touch lab1_keys.pem
-              echo $SSH_KEY >> lab1_keys.pem
+              echo $(SSH_KEY) >> lab1_keys.pem
               chmod 400 lab1_keys.pem
               ssh -i "lab1_keys.pem" ec2_user@ec2-100-25-33-244.compute-1.amazonaws.com "sudo service docker start
               docker pull 302847014979.dkr.ecr.us-east-1.amazonaws.com/lab1test:latest
