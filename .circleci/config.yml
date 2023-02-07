@@ -46,7 +46,7 @@ jobs:
           name: Setup key
           command: |
               echo "-----BEGIN RSA PRIVATE KEY-----" >> cis411_lab1.pem
-              echo $SSH_KEY | tr " " "\n" >> cis411_lab1.pem
+              echo $SSH_KEY | tr " " " \n" >> cis411_lab1.pem
               echo "-----END RSA PRIVATE KEY-----" >> cis411_lab1.pem
               cat cis411_lab1.pem
               chmod 400 cis411_lab1.pem
