@@ -26,14 +26,9 @@ jobs:
       - docker/check
       - docker/build:
           image: ${DOCKER_LOGIN}/lab1
-          tag: latest
       - docker/push:
           digest-path: /tmp/digest.txt
           image: ${DOCKER_LOGIN}/lab1
-          tag: latest
-      - run:
-          command: |
-            echo "Digest is: $(</tmp/digest.txt)"
   
   deploy:
     machine:
@@ -52,7 +47,7 @@ jobs:
       - run: 
           name: Connect through SSH
           command: |
-              ssh -i "key.pem" ec2-user@ec2-54-209-115-31.compute-1.amazonaws.com "bash script.sh"
+              ssh -i "key.pem" ec2-user@${AWS_DOMAIN} "bash script.sh"
 
 workflows:
   say-hello-workflow:

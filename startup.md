@@ -16,4 +16,10 @@ nano script.sh
 logout
 ```
 - fill out env_vars:
-  - do
+  - [x] docker_login
+  - [x] docker_password
+  - [x] aws_access_key_id
+  - [x] aws_default_region
+  - [x] aws_secret_access_key
+  - [x] ssh_key
+  - [x] aws_domain 
