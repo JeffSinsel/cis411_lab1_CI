@@ -40,9 +40,9 @@ jobs:
               sudo service docker start
               docker pull jeffsinsel/lab1:latest
               if docker ps -aq; then
+                  docker stop $(docker ps -aq)
                   docker run -p 4000:4000 --rm jeffsinsel/lab1:latest
               else
-                  docker stop $(docker ps -aq)
                   docker run -p 4000:4000 --rm jeffsinsel/lab1:latest
               fi"
       # - run:
