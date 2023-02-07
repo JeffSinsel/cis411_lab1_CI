@@ -20,8 +20,7 @@ jobs:
           command: yarn run test
           name: Run tests
   deploy:
-    machine:
-      enabled: true
+    executor: docker/docker
     steps:
       - checkout
       - aws-cli/install
