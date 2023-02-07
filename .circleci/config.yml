@@ -36,13 +36,14 @@ jobs:
       - run: 
           name: Connect to SSH server
           command: |
-              ssh -i "cis411_lab1.pem" ec2_user@ec2-100-25-33-244.compute-1.amazonaws.com "sudo service docker start
-              if [ docker ps -aq ]; then
-                  docker run -p 4000:4000 --rm jeffsinsel/lab1:latest
-              else
-                  docker stop $(docker ps -aq)
-                  docker run -p 4000:4000 --rm jeffsinsel/lab1:latest
-              fi"
+              ssh -i "cis411_lab1.pem" ec2_user@ec2-100-25-33-244.compute-1.amazonaws.com 
+            # sudo service docker start
+            # if [ docker ps -aq ]; then
+            #     docker run -p 4000:4000 --rm jeffsinsel/lab1:latest
+            # else
+            #     docker stop $(docker ps -aq)
+            #     docker run -p 4000:4000 --rm jeffsinsel/lab1:latest
+            # fi"
       # - run:
       #     name: Deploy
       #     command: |
