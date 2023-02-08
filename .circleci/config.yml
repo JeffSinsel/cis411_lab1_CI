@@ -42,9 +42,8 @@ jobs:
       - run: 
           name: Connect and deploy through SSH
           command: ssh -o "StrictHostKeyChecking no" ec2-user@${AWS_DOMAIN} "
-          sudo service docker start
-          bash script.sh
-          exit 0"
+              sudo service docker start
+              bash script.sh"
 
 workflows:
   say-hello-workflow:
