@@ -28,6 +28,7 @@
     "express-graphql": "^0.6.12",
     "graphql": "^14.0.2",
     "lokijs": "^1.5.5",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "forever": "^4.0.0"
   }
 }
