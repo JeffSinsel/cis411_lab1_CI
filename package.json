@@ -26,9 +26,9 @@
   "dependencies": {
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
+    "forever": "^4.0.3",
     "graphql": "^14.0.2",
     "lokijs": "^1.5.5",
-    "uuid": "^3.3.2",
-    "forever": "^4.0.0"
+    "uuid": "^3.3.2"
   }
 }
