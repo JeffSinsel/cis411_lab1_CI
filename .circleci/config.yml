@@ -41,12 +41,10 @@ jobs:
       - aws-cli/setup
       - run: 
           name: Connect and deploy through SSH
-          command: ssh -o "StrictHostKeyChecking no" ec2-user@${AWS_DOMAIN} "bash script.sh"
-      - run:
-          name: End after time
-          command: |
-              sleep 10
-              exit 0
+          command: ssh -o "StrictHostKeyChecking no" ec2-user@${AWS_DOMAIN} "
+          sudo service docker start
+          bash script.sh
+          exit 0"
 
 workflows:
   say-hello-workflow:
