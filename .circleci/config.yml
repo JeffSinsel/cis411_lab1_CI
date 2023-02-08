@@ -44,7 +44,8 @@ jobs:
           no_output_timeout: 30s
           command: ssh -o "StrictHostKeyChecking no" ec2-user@${AWS_DOMAIN} "
               sudo service docker start;
-              bash script.sh -e;" || true
+              true;
+              bash script.sh;"
 
 workflows:
   say-hello-workflow:
