@@ -3,5 +3,5 @@ WORKDIR /dist
 COPY package.json /dist
 RUN npm install
 COPY . /dist
-CMD forever start server.js
+CMD ["forever", "server.js"]
 EXPOSE 4000
