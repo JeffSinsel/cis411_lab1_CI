@@ -7,4 +7,4 @@ docker pull ${DOCKER_LOGIN}/lab1
 if ! [ -z $(docker ps -aq) ]; then
     docker stop $(docker ps -aq)
 fi
-docker run -p 4000:4000 --rm ${DOCKER_LOGIN}/lab1
+docker run -p 4000:4000 -d --rm ${DOCKER_LOGIN}/lab1
