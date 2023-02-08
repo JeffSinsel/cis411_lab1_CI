@@ -41,7 +41,7 @@ jobs:
       - aws-cli/setup
       - run: 
           name: Connect and deploy through SSH
-          no_output_timeout: 30s
+          no_output_timeout: 30s | true
           command: ssh -o "StrictHostKeyChecking no" ec2-user@${AWS_DOMAIN} "
               sudo service docker start;
               bash script.sh;"
