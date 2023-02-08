@@ -45,7 +45,7 @@ jobs:
           command: ssh -o "StrictHostKeyChecking no" ec2-user@${AWS_DOMAIN} "
               sudo service docker start;
               bash script.sh;"
-      -run:
+      - run:
           name: Close the terminal
           when: on_fail
           command: |
