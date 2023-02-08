@@ -37,8 +37,6 @@ jobs:
       enabled: true
     steps:
       - checkout
-      - aws-cli/install
-      - aws-cli/setup
       - run: 
           name: Connect and deploy through SSH
           no_output_timeout: 30s

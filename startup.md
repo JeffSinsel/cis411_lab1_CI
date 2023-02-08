@@ -17,9 +17,14 @@ logout
 ```
 - fill out env_vars:
   - [x] docker_login
+    - dockerhub username (not the email the other one)
   - [x] docker_password
+    - dockerhub password
   - [x] aws_access_key_id
+    - ![link]()
   - [x] aws_default_region
+    - the first part of the domain, should be something like us-east-1
   - [x] aws_secret_access_key
   - [x] ssh_key
   - [x] aws_domain 
+    - 
