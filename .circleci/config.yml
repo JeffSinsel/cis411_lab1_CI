@@ -48,10 +48,9 @@ jobs:
       #         chmod 400 key.pem
       - run: 
           name: Connect through SSH
-          command: |
-# ssh -i "key.pem" ec2-user@${AWS_DOMAIN} "bash script.sh"
-              ssh -o "StrictHostKeyChecking no" ec2-user@${AWS_DOMAIN} "bash script.sh"
-
+          command: ssh -o "StrictHostKeyChecking no" ec2-user@${AWS_DOMAIN} "bash script.sh"
+              # ssh -i "key.pem" ec2-user@${AWS_DOMAIN} "bash script.sh"
+              
 workflows:
   say-hello-workflow:
     jobs:
