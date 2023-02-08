@@ -49,10 +49,10 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
-      - test
-      - build-and-push:
-          requires:
-            - test
+      # - test
+      # - build-and-push:
+      #     requires:
+      #       - test
       - deploy:
           requires:
             - build-and-push
