@@ -39,18 +39,11 @@ jobs:
       - checkout
       - aws-cli/install
       - aws-cli/setup
-      # - run: 
-      #     name: Setup key
-      #     command: |
-      #         echo "-----BEGIN RSA PRIVATE KEY-----" >> key.pem
-      #         echo $SSH_KEY | tr " " "\n" >> key.pem
-      #         echo "-----END RSA PRIVATE KEY-----" >> key.pem
-      #         chmod 400 key.pem
       - run: 
-          name: Connect through SSH
+          name: Connect and deploy through SSH
           command: ssh -o "StrictHostKeyChecking no" ec2-user@${AWS_DOMAIN} "bash script.sh"
-              # ssh -i "key.pem" ec2-user@${AWS_DOMAIN} "bash script.sh"
-              
+          no_output_timeout: 30s
+
 workflows:
   say-hello-workflow:
     jobs:
