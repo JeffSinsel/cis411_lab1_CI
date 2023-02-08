@@ -43,7 +43,7 @@ jobs:
           name: Connect and deploy through SSH
           command: ssh -o "StrictHostKeyChecking no" ec2-user@${AWS_DOMAIN} "
               sudo service docker start;
-              bash script.sh;"
+              bash script.sh -e;"
 
 workflows:
   say-hello-workflow:
